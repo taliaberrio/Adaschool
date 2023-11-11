@@ -1,6 +1,7 @@
 from pynput import keyboard as bk
 import os
 
+<<<<<<< HEAD
 
 def menu():
     # Configurar el listener del teclado
@@ -36,6 +37,23 @@ laberinto = [
 ]
 
 nombre = input("Por favor, ingrese su nombre: ")
+=======
+# Laberinto
+laberinto = [
+    ".........#",
+    "#.######.#",
+    "#.#....#.#",
+    "#######...",
+    "....###..#",
+    "#.........",
+    "...#######",
+    "#.###.....",
+    ".........#",
+    "####..#...",
+]
+
+nombre = input("Por favor, ingrse su nombre: ")
+>>>>>>> 0853d50f5593183220900f6a90c490572b66a9a2
 print("¡Inicia el juego!\n usa las teclas de las flechas para mover el personaje")
 
 fila = len(laberinto)
@@ -81,7 +99,11 @@ def moverpersonaje(key):
 def verificar_final():
     global fila, columna, posicion_personaje
     if posicion_personaje == [fila - 1, columna - 1]:
+<<<<<<< HEAD
         print(f"¡Felicidades" + " " + nombre + " " + "ganó el juego!")
+=======
+        print(f"¡Felicidades" + " " + nombre + " " + "terminó el laberinto!")
+>>>>>>> 0853d50f5593183220900f6a90c490572b66a9a2
         # finaliza el juego
 
 
@@ -90,4 +112,15 @@ def on_key_release(key):
         moverpersonaje(key)
 
 
+<<<<<<< HEAD
+=======
+def menu():
+    # Configurar el listener del teclado
+    listener = bk.Listener(on_release=on_key_release)
+    listener.start()
+    mostrarlaberinto()
+    listener.join()
+
+
+>>>>>>> 0853d50f5593183220900f6a90c490572b66a9a2
 menu()
