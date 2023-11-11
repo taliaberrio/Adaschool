@@ -1,21 +1,41 @@
 from pynput import keyboard as bk
 import os
 
+
+def menu():
+    # Configurar el listener del teclado
+    listener = bk.Listener(on_release=on_key_release)
+    listener.start()
+    mostrarlaberinto()
+    listener.join()
+
+
 # Laberinto
 laberinto = [
-    ".........#",
-    "#.######.#",
-    "#.#....#.#",
-    "#######...",
-    "....###..#",
-    "#.........",
-    "...#######",
-    "#.###.....",
-    ".........#",
-    "####..#...",
+    "###################",
+    "....#...............#",
+    "#.#.#####.#########.#",
+    "#.#...........#.#.#.#",
+    "#.#...........#.#.#.#",
+    "#...#.#.#.#.....#...#",
+    "#.#.#.#######.#.#####",
+    "#.#...#.....#.#...#.#",
+    "#####.#####.#.#.###.#",
+    "#.#.#.#.......#...#.#",
+    "#.#.#.#######.#####.#",
+    "#...#...#...#.#.#...#",
+    "###.#.#####.#.#.###.#",
+    "#.#...#.......#.....#",
+    "#.#.#.###.#.#.###.#.#",
+    "#...#.#...#.#.....#.#",
+    "###.#######.###.###.#",
+    "#.#.#.#.#.#...#.#...#",
+    "#.#.#.#.#.#.#.#.#.#.#",
+    "#.....#.....#.#.#.#.#",
+    "############.........",
 ]
 
-nombre = input("Por favor, ingrse su nombre: ")
+nombre = input("Por favor, ingrese su nombre: ")
 print("¡Inicia el juego!\n usa las teclas de las flechas para mover el personaje")
 
 fila = len(laberinto)
@@ -61,21 +81,13 @@ def moverpersonaje(key):
 def verificar_final():
     global fila, columna, posicion_personaje
     if posicion_personaje == [fila - 1, columna - 1]:
-        print(f"¡Felicidades" + " " + nombre + " " + "terminó el laberinto!")
+        print(f"¡Felicidades" + " " + nombre + " " + "ganó el juego!")
         # finaliza el juego
 
 
 def on_key_release(key):
     if key in [bk.Key.up, bk.Key.down, bk.Key.left, bk.Key.right]:
         moverpersonaje(key)
-
-
-def menu():
-    # Configurar el listener del teclado
-    listener = bk.Listener(on_release=on_key_release)
-    listener.start()
-    mostrarlaberinto()
-    listener.join()
 
 
 menu()
